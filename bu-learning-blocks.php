@@ -58,6 +58,8 @@ function bulb_activate() {
 		update_option( 'bulb_cpt_install_dialog', 1 );
 	}
 	update_option( 'bulb_active', 1 );
+	// In case CPT install is selected on dialog
+	update_option( 'bulb_install_flush_rewrites', 1 );
 }
 register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_activate' );
 

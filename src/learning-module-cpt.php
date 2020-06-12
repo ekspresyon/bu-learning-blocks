@@ -119,11 +119,19 @@ add_action( 'init', 'bulb_register_learning_module_post_type' );
  *
  * @since 0.0.4
  */
+
+// run flush_rewrite_rules when CPT install selected in activation dialog
+if ( get_option( 'bulb_install_flush_rewrites' ) ) {
+	add_action( 'init', 'bulb_flush_rewrites' );
+
+}
 function bulb_flush_rewrites() {
 	bulb_register_learning_module_post_type();
 	flush_rewrite_rules();
+	// Stop this fuction from running ever again after activation
+	delete_option( 'bulb_install_flush_rewrites' ); 
 }
-register_activation_hook( BULB_PLUGIN_FILE_PATH, 'bulb_flush_rewrites' );
+
 
 
 /**
