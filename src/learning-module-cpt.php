@@ -156,6 +156,7 @@ function bulb_cpt_template( $single ) {
 	return $single;
 
 }
+
 /* Filter the single_template with our custom function*/
 add_filter( 'single_template', 'bulb_cpt_template' );
 
